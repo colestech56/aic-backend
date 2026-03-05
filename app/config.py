@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     SUPABASE_URL: str = ""
     SUPABASE_SERVICE_KEY: str = ""
     SUPABASE_JWT_SECRET: str = ""
-    DEEPSEEK_API_KEY: str = "sk-ec14e684b1004c29bd2fa3a5d6696e31"
+    DEEPSEEK_API_KEY: str = ""
     ENVIRONMENT: str = "development"
 
     # LLM settings
