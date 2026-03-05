@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import logging
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select, and_
@@ -73,18 +73,13 @@ async def submit_survey(
     if not schedule:
         raise HTTPException(status_code=404, detail="Survey schedule not found")
 
-    if schedule.status == "completed":
-        raise HTTPException(status_code=400, detail="Survey already completed")
-
-    if schedule.status == "expired":
-        raise HTTPException(status_code=400, detail="Survey window has expired")
-
-    # Check if window is still open
+    # For the demo schedule, auto-reset so users can keep testing
     now = datetime.utcnow()
-    if now > schedule.window_closes_at:
-        schedule.status = "expired"
-        await db.commit()
-        raise HTTPException(status_code=400, detail="Survey window has expired")
+    if schedule.status in ("completed", "expired") or now > schedule.window_closes_at:
+        schedule.status = "scheduled"
+        schedule.completed_at = None
+        schedule.window_closes_at = now + timedelta(hours=24)
+        await db.flush()
 
     # Compute NA score if anxiety and sadness are present
     response_data = submission.response_data
