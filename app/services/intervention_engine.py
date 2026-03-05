@@ -495,7 +495,7 @@ class InterventionEngine:
         arm_name: str,
         reward: float,
     ) -> None:
-        """Update a single bandit arm's posterior with row-level locking."""
+        """Update a single bandit arm's posterior."""
         result = await self.db.execute(
             select(BanditArm)
             .where(and_(
@@ -503,7 +503,6 @@ class InterventionEngine:
                 BanditArm.bandit_type == bandit_type,
                 BanditArm.arm_name == arm_name,
             ))
-            .with_for_update()
         )
         arm = result.scalar_one()
         arm.alpha += reward
