@@ -1,0 +1,141 @@
+INFO:     Started server process [81964]
+INFO:     Waiting for application startup.
+2026-03-05 11:58:10,680 [INFO] app.main: AIC backend starting up (env=development)
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56613 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58679 - "GET /health HTTP/1.1" 200 OK
+2026-03-05 12:11:15,397 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-05 12:11:15,397 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2026-03-05 12:11:15,402 INFO sqlalchemy.engine.Engine SELECT survey_schedules.id, survey_schedules.participant_id, survey_schedules.survey_type, survey_schedules.scheduled_at, survey_schedules.window_closes_at, survey_schedules.status, survey_schedules.delivered_at, survey_schedules.completed_at, survey_schedules.linked_intervention_id, survey_schedules.created_at 
+FROM survey_schedules 
+WHERE survey_schedules.id = ?
+2026-03-05 12:11:15,402 [INFO] sqlalchemy.engine.Engine: SELECT survey_schedules.id, survey_schedules.participant_id, survey_schedules.survey_type, survey_schedules.scheduled_at, survey_schedules.window_closes_at, survey_schedules.status, survey_schedules.delivered_at, survey_schedules.completed_at, survey_schedules.linked_intervention_id, survey_schedules.created_at 
+FROM survey_schedules 
+WHERE survey_schedules.id = ?
+2026-03-05 12:11:15,403 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('22222222222222222222222222222222',)
+2026-03-05 12:11:15,403 [INFO] sqlalchemy.engine.Engine: [generated in 0.00020s] ('22222222222222222222222222222222',)
+2026-03-05 12:11:15,405 INFO sqlalchemy.engine.Engine INSERT INTO survey_responses (id, schedule_id, participant_id, survey_type, response_data, na_score, submitted_at, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-05 12:11:15,405 [INFO] sqlalchemy.engine.Engine: INSERT INTO survey_responses (id, schedule_id, participant_id, survey_type, response_data, na_score, submitted_at, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-05 12:11:15,405 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ('3f36f06c4d984769acd260af9a4e809d', '22222222222222222222222222222222', '11111111111111111111111111111111', 'ema', '{"anxiety": 6, "sadness": 5, "happiness": 2, "relaxation": 2, "hearing_voices": false, "paranoia": false, "special_messages": false, "mind_reading": false, "special_powers": false, "location": "home", "social_context": "alone", "current_activity": "resting"}', 5.5, '2026-03-05 17:11:15.405321', '2026-03-05 17:11:15.405324')
+2026-03-05 12:11:15,405 [INFO] sqlalchemy.engine.Engine: [generated in 0.00025s] ('3f36f06c4d984769acd260af9a4e809d', '22222222222222222222222222222222', '11111111111111111111111111111111', 'ema', '{"anxiety": 6, "sadness": 5, "happiness": 2, "relaxation": 2, "hearing_voices": false, "paranoia": false, "special_messages": false, "mind_reading": false, "special_powers": false, "location": "home", "social_context": "alone", "current_activity": "resting"}', 5.5, '2026-03-05 17:11:15.405321', '2026-03-05 17:11:15.405324')
+2026-03-05 12:11:15,406 INFO sqlalchemy.engine.Engine UPDATE survey_schedules SET status=?, completed_at=? WHERE survey_schedules.id = ?
+2026-03-05 12:11:15,406 [INFO] sqlalchemy.engine.Engine: UPDATE survey_schedules SET status=?, completed_at=? WHERE survey_schedules.id = ?
+2026-03-05 12:11:15,406 INFO sqlalchemy.engine.Engine [generated in 0.00009s] ('completed', '2026-03-05 17:11:15.404021', '22222222222222222222222222222222')
+2026-03-05 12:11:15,406 [INFO] sqlalchemy.engine.Engine: [generated in 0.00009s] ('completed', '2026-03-05 17:11:15.404021', '22222222222222222222222222222222')
+2026-03-05 12:11:15,407 INFO sqlalchemy.engine.Engine SELECT participants.id, participants.study_id, participants.diagnostic_group, participants.condition, participants.enrolled_at, participants.active, participants.wake_time, participants.sleep_time, participants.timezone, participants.silenced_until, participants.created_at, participants.updated_at 
+FROM participants 
+WHERE participants.id = ?
+2026-03-05 12:11:15,407 [INFO] sqlalchemy.engine.Engine: SELECT participants.id, participants.study_id, participants.diagnostic_group, participants.condition, participants.enrolled_at, participants.active, participants.wake_time, participants.sleep_time, participants.timezone, participants.silenced_until, participants.created_at, participants.updated_at 
+FROM participants 
+WHERE participants.id = ?
+2026-03-05 12:11:15,407 INFO sqlalchemy.engine.Engine [generated in 0.00008s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,407 [INFO] sqlalchemy.engine.Engine: [generated in 0.00008s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,408 INFO sqlalchemy.engine.Engine SELECT threshold_state.id, threshold_state.participant_id, threshold_state.current_threshold, threshold_state.na_scores, threshold_state.n_surveys, threshold_state.individual_weight, threshold_state.last_recalculated_at, threshold_state.created_at, threshold_state.updated_at 
+FROM threshold_state 
+WHERE threshold_state.participant_id = ?
+2026-03-05 12:11:15,408 [INFO] sqlalchemy.engine.Engine: SELECT threshold_state.id, threshold_state.participant_id, threshold_state.current_threshold, threshold_state.na_scores, threshold_state.n_surveys, threshold_state.individual_weight, threshold_state.last_recalculated_at, threshold_state.created_at, threshold_state.updated_at 
+FROM threshold_state 
+WHERE threshold_state.participant_id = ?
+2026-03-05 12:11:15,408 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,408 [INFO] sqlalchemy.engine.Engine: [generated in 0.00006s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,409 INFO sqlalchemy.engine.Engine UPDATE threshold_state SET current_threshold=?, na_scores=?, n_surveys=?, individual_weight=?, last_recalculated_at=?, updated_at=? WHERE threshold_state.id = ?
+2026-03-05 12:11:15,409 [INFO] sqlalchemy.engine.Engine: UPDATE threshold_state SET current_threshold=?, na_scores=?, n_surveys=?, individual_weight=?, last_recalculated_at=?, updated_at=? WHERE threshold_state.id = ?
+2026-03-05 12:11:15,409 INFO sqlalchemy.engine.Engine [generated in 0.00010s] (4.071428571428571, '[5.5]', 1, 0.047619047619047616, '2026-03-05 17:11:15.408954', '2026-03-05 17:11:15.408958', 'dc24800d2173456ba1b1412dc77db510')
+2026-03-05 12:11:15,409 [INFO] sqlalchemy.engine.Engine: [generated in 0.00010s] (4.071428571428571, '[5.5]', 1, 0.047619047619047616, '2026-03-05 17:11:15.408954', '2026-03-05 17:11:15.408958', 'dc24800d2173456ba1b1412dc77db510')
+2026-03-05 12:11:15,410 INFO sqlalchemy.engine.Engine SELECT participant_preferences.id, participant_preferences.participant_id, participant_preferences.preferred_activities, participant_preferences.onboarding_data, participant_preferences.created_at, participant_preferences.updated_at 
+FROM participant_preferences 
+WHERE participant_preferences.participant_id = ?
+2026-03-05 12:11:15,410 [INFO] sqlalchemy.engine.Engine: SELECT participant_preferences.id, participant_preferences.participant_id, participant_preferences.preferred_activities, participant_preferences.onboarding_data, participant_preferences.created_at, participant_preferences.updated_at 
+FROM participant_preferences 
+WHERE participant_preferences.participant_id = ?
+2026-03-05 12:11:15,410 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,410 [INFO] sqlalchemy.engine.Engine: [generated in 0.00007s] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,450 INFO sqlalchemy.engine.Engine SELECT threshold_state.id, threshold_state.participant_id, threshold_state.current_threshold, threshold_state.na_scores, threshold_state.n_surveys, threshold_state.individual_weight, threshold_state.last_recalculated_at, threshold_state.created_at, threshold_state.updated_at 
+FROM threshold_state 
+WHERE threshold_state.participant_id = ?
+2026-03-05 12:11:15,450 [INFO] sqlalchemy.engine.Engine: SELECT threshold_state.id, threshold_state.participant_id, threshold_state.current_threshold, threshold_state.na_scores, threshold_state.n_surveys, threshold_state.individual_weight, threshold_state.last_recalculated_at, threshold_state.created_at, threshold_state.updated_at 
+FROM threshold_state 
+WHERE threshold_state.participant_id = ?
+2026-03-05 12:11:15,450 INFO sqlalchemy.engine.Engine [cached since 0.04188s ago] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,450 [INFO] sqlalchemy.engine.Engine: [cached since 0.04188s ago] ('11111111111111111111111111111111',)
+2026-03-05 12:11:15,450 INFO sqlalchemy.engine.Engine SELECT interventions.delivered_at 
+FROM interventions 
+WHERE interventions.participant_id = ? AND interventions.delivered_at IS NOT NULL ORDER BY interventions.delivered_at DESC
+ LIMIT ? OFFSET ?
+2026-03-05 12:11:15,450 [INFO] sqlalchemy.engine.Engine: SELECT interventions.delivered_at 
+FROM interventions 
+WHERE interventions.participant_id = ? AND interventions.delivered_at IS NOT NULL ORDER BY interventions.delivered_at DESC
+ LIMIT ? OFFSET ?
+2026-03-05 12:11:15,451 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ('11111111111111111111111111111111', 1, 0)
+2026-03-05 12:11:15,451 [INFO] sqlalchemy.engine.Engine: [generated in 0.00007s] ('11111111111111111111111111111111', 1, 0)
+2026-03-05 12:11:15,451 INFO sqlalchemy.engine.Engine SELECT bandit_arms.id, bandit_arms.participant_id, bandit_arms.bandit_type, bandit_arms.arm_name, bandit_arms.arm_index, bandit_arms.alpha, bandit_arms.beta, bandit_arms.times_selected, bandit_arms.total_reward, bandit_arms.created_at, bandit_arms.updated_at 
+FROM bandit_arms 
+WHERE bandit_arms.participant_id = ? AND bandit_arms.bandit_type = ? ORDER BY bandit_arms.arm_index
+2026-03-05 12:11:15,451 [INFO] sqlalchemy.engine.Engine: SELECT bandit_arms.id, bandit_arms.participant_id, bandit_arms.bandit_type, bandit_arms.arm_name, bandit_arms.arm_index, bandit_arms.alpha, bandit_arms.beta, bandit_arms.times_selected, bandit_arms.total_reward, bandit_arms.created_at, bandit_arms.updated_at 
+FROM bandit_arms 
+WHERE bandit_arms.participant_id = ? AND bandit_arms.bandit_type = ? ORDER BY bandit_arms.arm_index
+2026-03-05 12:11:15,451 INFO sqlalchemy.engine.Engine [generated in 0.00005s] ('11111111111111111111111111111111', 'timing')
+2026-03-05 12:11:15,451 [INFO] sqlalchemy.engine.Engine: [generated in 0.00005s] ('11111111111111111111111111111111', 'timing')
+2026-03-05 12:11:15,452 INFO sqlalchemy.engine.Engine SELECT bandit_arms.id, bandit_arms.participant_id, bandit_arms.bandit_type, bandit_arms.arm_name, bandit_arms.arm_index, bandit_arms.alpha, bandit_arms.beta, bandit_arms.times_selected, bandit_arms.total_reward, bandit_arms.created_at, bandit_arms.updated_at 
+FROM bandit_arms 
+WHERE bandit_arms.participant_id = ? AND bandit_arms.bandit_type = ? ORDER BY bandit_arms.arm_index
+2026-03-05 12:11:15,452 [INFO] sqlalchemy.engine.Engine: SELECT bandit_arms.id, bandit_arms.participant_id, bandit_arms.bandit_type, bandit_arms.arm_name, bandit_arms.arm_index, bandit_arms.alpha, bandit_arms.beta, bandit_arms.times_selected, bandit_arms.total_reward, bandit_arms.created_at, bandit_arms.updated_at 
+FROM bandit_arms 
+WHERE bandit_arms.participant_id = ? AND bandit_arms.bandit_type = ? ORDER BY bandit_arms.arm_index
+2026-03-05 12:11:15,452 INFO sqlalchemy.engine.Engine [cached since 0.0005397s ago] ('11111111111111111111111111111111', 'intervention_type')
+2026-03-05 12:11:15,452 [INFO] sqlalchemy.engine.Engine: [cached since 0.0005397s ago] ('11111111111111111111111111111111', 'intervention_type')
+2026-03-05 12:11:15,453 INFO sqlalchemy.engine.Engine SELECT daily_counters.id, daily_counters.participant_id, daily_counters.counter_date, daily_counters.social_outreach_count, daily_counters.intervention_count 
+FROM daily_counters 
+WHERE daily_counters.participant_id = ? AND daily_counters.counter_date = ?
+2026-03-05 12:11:15,453 [INFO] sqlalchemy.engine.Engine: SELECT daily_counters.id, daily_counters.participant_id, daily_counters.counter_date, daily_counters.social_outreach_count, daily_counters.intervention_count 
+FROM daily_counters 
+WHERE daily_counters.participant_id = ? AND daily_counters.counter_date = ?
+2026-03-05 12:11:15,453 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ('11111111111111111111111111111111', '2026-03-05')
+2026-03-05 12:11:15,453 [INFO] sqlalchemy.engine.Engine: [generated in 0.00006s] ('11111111111111111111111111111111', '2026-03-05')
+2026-03-05 12:11:15,454 INFO sqlalchemy.engine.Engine SELECT content_history.content_text 
+FROM content_history 
+WHERE content_history.participant_id = ? AND content_history.delivered_at >= ? ORDER BY content_history.delivered_at DESC
+2026-03-05 12:11:15,454 [INFO] sqlalchemy.engine.Engine: SELECT content_history.content_text 
+FROM content_history 
+WHERE content_history.participant_id = ? AND content_history.delivered_at >= ? ORDER BY content_history.delivered_at DESC
+2026-03-05 12:11:15,454 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ('11111111111111111111111111111111', '2026-03-04 17:11:15.454108')
+2026-03-05 12:11:15,454 [INFO] sqlalchemy.engine.Engine: [generated in 0.00007s] ('11111111111111111111111111111111', '2026-03-04 17:11:15.454108')
+2026-03-05 12:11:15,454 INFO sqlalchemy.engine.Engine SELECT content_history.content_text 
+FROM content_history 
+WHERE content_history.participant_id = ? AND content_history.delivered_at >= ?
+2026-03-05 12:11:15,454 [INFO] sqlalchemy.engine.Engine: SELECT content_history.content_text 
+FROM content_history 
+WHERE content_history.participant_id = ? AND content_history.delivered_at >= ?
+2026-03-05 12:11:15,454 INFO sqlalchemy.engine.Engine [generated in 0.00005s] ('11111111111111111111111111111111', '2026-03-05 00:00:00.000000')
+2026-03-05 12:11:15,454 [INFO] sqlalchemy.engine.Engine: [generated in 0.00005s] ('11111111111111111111111111111111', '2026-03-05 00:00:00.000000')
+2026-03-05 12:11:15,984 [INFO] httpx: HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-05 12:11:19,024 INFO sqlalchemy.engine.Engine INSERT INTO interventions (id, participant_id, trigger_survey_id, trigger_na_score, threshold_at_trigger, timing_arm, intervention_type_arm, timing_sample, type_sample, content_text, content_source, llm_raw_response, screening_passed, screening_retries, cosine_sim_max, scheduled_delivery_at, delivered_at, status, reward_na_change, reward_helpfulness, reward_combined, reward_calculated_at, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-05 12:11:19,024 [INFO] sqlalchemy.engine.Engine: INSERT INTO interventions (id, participant_id, trigger_survey_id, trigger_na_score, threshold_at_trigger, timing_arm, intervention_type_arm, timing_sample, type_sample, content_text, content_source, llm_raw_response, screening_passed, screening_retries, cosine_sim_max, scheduled_delivery_at, delivered_at, status, reward_na_change, reward_helpfulness, reward_combined, reward_calculated_at, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-05 12:11:19,024 INFO sqlalchemy.engine.Engine [generated in 0.00056s] ('76f749cad1de4007a2ad83156c1ec01d', '11111111111111111111111111111111', '3f36f06c4d984769acd260af9a4e809d', 5.5, 4.071428571428571, '5_min_delay', 'relaxation_breathing', 0.9502542871335454, 0.8026048218221097, 'Since you are resting at home, try a simple breathing exercise. Inhale for a count of four, then exhale slowly for a count of six. After that, you could choose to listen to some music or do a few gentle stretches.', 'llm', None, 1, 0, None, '2026-03-05 17:16:19.020979', None, 'pending', None, None, None, None, '2026-03-05 17:11:19.024310')
+2026-03-05 12:11:19,024 [INFO] sqlalchemy.engine.Engine: [generated in 0.00056s] ('76f749cad1de4007a2ad83156c1ec01d', '11111111111111111111111111111111', '3f36f06c4d984769acd260af9a4e809d', 5.5, 4.071428571428571, '5_min_delay', 'relaxation_breathing', 0.9502542871335454, 0.8026048218221097, 'Since you are resting at home, try a simple breathing exercise. Inhale for a count of four, then exhale slowly for a count of six. After that, you could choose to listen to some music or do a few gentle stretches.', 'llm', None, 1, 0, None, '2026-03-05 17:16:19.020979', None, 'pending', None, None, None, None, '2026-03-05 17:11:19.024310')
+2026-03-05 12:11:19,025 INFO sqlalchemy.engine.Engine SELECT daily_counters.id, daily_counters.participant_id, daily_counters.counter_date, daily_counters.social_outreach_count, daily_counters.intervention_count 
+FROM daily_counters 
+WHERE daily_counters.participant_id = ? AND daily_counters.counter_date = ?
+2026-03-05 12:11:19,025 [INFO] sqlalchemy.engine.Engine: SELECT daily_counters.id, daily_counters.participant_id, daily_counters.counter_date, daily_counters.social_outreach_count, daily_counters.intervention_count 
+FROM daily_counters 
+WHERE daily_counters.participant_id = ? AND daily_counters.counter_date = ?
+2026-03-05 12:11:19,025 INFO sqlalchemy.engine.Engine [cached since 3.572s ago] ('11111111111111111111111111111111', '2026-03-05')
+2026-03-05 12:11:19,025 [INFO] sqlalchemy.engine.Engine: [cached since 3.572s ago] ('11111111111111111111111111111111', '2026-03-05')
+2026-03-05 12:11:19,026 [ERROR] app.routers.surveys: Intervention pipeline failed for participant 11111111-1111-1111-1111-111111111111 (survey response saved)
+Traceback (most recent call last):
+  File "/Users/shakcole/Downloads/aic/backend/app/routers/surveys.py", line 140, in submit_survey
+    intervention = await engine.evaluate_and_deliver(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shakcole/Downloads/aic/backend/app/services/intervention_engine.py", line 150, in evaluate_and_deliver
+    await self._increment_daily_counter(participant_id, type_arm.arm_name)
+  File "/Users/shakcole/Downloads/aic/backend/app/services/intervention_engine.py", line 404, in _increment_daily_counter
+    counter.intervention_count += 1
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
+2026-03-05 12:11:19,027 INFO sqlalchemy.engine.Engine INSERT INTO daily_counters (id, participant_id, counter_date, social_outreach_count, intervention_count) VALUES (?, ?, ?, ?, ?)
+2026-03-05 12:11:19,027 [INFO] sqlalchemy.engine.Engine: INSERT INTO daily_counters (id, participant_id, counter_date, social_outreach_count, intervention_count) VALUES (?, ?, ?, ?, ?)
+2026-03-05 12:11:19,027 INFO sqlalchemy.engine.Engine [generated in 0.00018s] ('5f85816fb29f4ab0abc60412249082ff', '11111111111111111111111111111111', '2026-03-05', 0, 0)
+2026-03-05 12:11:19,027 [INFO] sqlalchemy.engine.Engine: [generated in 0.00018s] ('5f85816fb29f4ab0abc60412249082ff', '11111111111111111111111111111111', '2026-03-05', 0, 0)
+2026-03-05 12:11:19,028 INFO sqlalchemy.engine.Engine COMMIT
+2026-03-05 12:11:19,028 [INFO] sqlalchemy.engine.Engine: COMMIT
+INFO:     127.0.0.1:58681 - "POST /api/v1/surveys/22222222-2222-2222-2222-222222222222/respond HTTP/1.1" 200 OK
